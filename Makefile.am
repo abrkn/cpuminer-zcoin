@@ -92,7 +92,8 @@ cpuminer_SOURCES = \
   algo/x14.c \
   algo/x15.c \
   algo/yescrypt.c \
-  algo/zr5.c
+  algo/zr5.c \
+	algo/zcoin.c
 
 disable_flags =
 

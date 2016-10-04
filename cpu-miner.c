@@ -120,6 +120,7 @@ enum algos {
 	ALGO_X15,         /* X15 Whirlpool */
 	ALGO_YESCRYPT,
 	ALGO_ZR5,
+	ALGO_ZCOIN,
 	ALGO_COUNT
 };
 
@@ -167,6 +168,7 @@ static const char *algo_names[] = {
 	"x15",
 	"yescrypt",
 	"zr5",
+	"zcoin",
 	"\0"
 };
 
@@ -313,6 +315,7 @@ Options:\n\
                           x15          X15\n\
                           yescrypt     Yescrypt\n\
                           zr5          ZR5\n\
+                          zcoin        ZCoin\n\
   -o, --url=URL         URL of mining server\n\
   -O, --userpass=U:P    username:password pair for mining server\n\
   -u, --user=USERNAME   username for mining server\n\
@@ -2233,6 +2236,11 @@ static void *miner_thread(void *userdata)
 			break;
 		case ALGO_ZR5:
 			rc = scanhash_zr5(thr_id, &work, max_nonce, &hashes_done);
+			break;
+		case ALGO_ZCOIN:
+			// TODO: Replace with height
+			printf("wow made to scan hash at %d\n", net_blocks);
+			rc = scanhash_zcoin(153, thr_id, &work, max_nonce, &hashes_done);
 			break;
 		default:
 			/* should never happen */
